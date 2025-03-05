@@ -11,12 +11,14 @@
       background-color: #ffffff;
       font-family: Arial, sans-serif;
       font-size: 14px; /* Slightly smaller base font size */
+      color: #000;     /* Standard black text */
     }
 
     /* Navigation bar */
     nav {
       padding: 10px;
       border-bottom: 2px solid #0066cc;  /* Blue-ish line under nav */
+      background-color: #f9f9f9;         /* Light background for a subtle contrast */
     }
     nav a {
       color: #0066cc;            /* Blue-ish links */
@@ -24,12 +26,15 @@
       text-decoration: none;
       font-weight: bold;
     }
+    nav a:hover {
+      text-decoration: underline; /* Hover effect for links */
+    }
 
     /* Headings */
     h1 {
-      color: #0066cc;            /* Blue-ish heading */
+      color: #0066cc;            
       margin-top: 20px;
-      font-size: 1.8em;          /* Keep "Working Papers" larger */
+      font-size: 1.8em;          /* Larger heading for "Working Papers" */
     }
     h2 {
       color: #0066cc;
@@ -44,28 +49,42 @@
       padding: 20px;
     }
 
-    /* Paper sections */
+    /* Each paper block styled like a card */
     .paper {
       margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      background-color: #fafafa;
     }
     .paper-title {
-      color: #0066cc;            /* Blue-ish paper title */
+      color: #0066cc;            
       margin-bottom: 5px;
     }
-    /* Underline links in the title */
     .paper-title a {
       text-decoration: underline; 
       color: #0066cc;
     }
+    .paper-title a:hover {
+      text-decoration: none;     /* Subtle hover: remove underline */
+    }
 
-    /* Style coauthor line if desired */
     .coauthors {
       margin: 5px 0;
       font-style: italic;
     }
+    /* Optional comment section for presentations, awards, etc. */
+    .paper-comment {
+      margin: 10px 0;
+      font-style: italic;
+      color: #555;
+      font-size: 0.9em;
+    }
+
     .paper-abstract {
-      color: #000000;            /* Abstract in black text */
+      color: #000000;            /* Abstract in black */
       line-height: 1.6;
+      margin-top: 10px;
     }
 
     /* Footer */
@@ -73,6 +92,8 @@
       text-align: center;
       padding: 10px;
       color: #333333;
+      background-color: #f9f9f9;
+      border-top: 1px solid #ddd;
     }
   </style>
 </head>
@@ -89,18 +110,25 @@
     <!-- Example paper 1 -->
     <div class="paper">
       <h2 class="paper-title">
-        <!-- Link in the title, underlined by default -->
+        <!-- Link in the title -->
         <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754" target="_blank">
           AI in Finance and Information Overload
         </a>
       </h2>
-      <!-- Coauthors below title -->
+
+      <!-- Coauthors -->
       <p class="coauthors">
         With
         <a href="https://www.balogh.net/home" target="_blank">Attila Balogh</a>,
         <a href="https://www.antoinedidisheim.com/" target="_blank">Antoine Didisheim</a>,
         <a href="https://www.lucianosomoza.com/" target="_blank">Luciano Somoza</a>
       </p>
+
+      <!-- Optional comment section (leave empty or remove if not needed) -->
+      <p class="paper-comment">
+      </p>
+
+      <!-- Abstract -->
       <p class="paper-abstract">
         Artificial intelligence is reshaping financial markets, yet the limits to its rationality remain underexplored. 
         This paper documents information overload in Large Language Models applied to financial analysis. 
@@ -111,6 +139,35 @@
         necessitating empirical tuning to determine the right amount of context for each task.
       </p>
     </div>
+
+    <!-- Example paper 2 -->
+    <div class="paper">
+      <h2 class="paper-title">
+        <!-- Link in the title -->
+        <!-- a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754" target="_blank" -->
+          Showing Emotions in Academia: What is the Cost and Who Can Afford It?
+        </a>
+      </h2>
+
+      <!-- Coauthors -->
+      <p class="coauthors">
+        With
+        <a href="https://sites.google.com/view/marinagertsberg" target="_blank">Marina Gertsberg</a>,
+        <a href="https://www.antoinedidisheim.com/" target="_blank">Antoine Didisheim</a>
+      </p>
+
+      <!-- Optional comment section (leave empty or remove if not needed) -->
+      <p class="paper-comment">
+      [Draft Coming Soon] Winner of the AFFECT/JFE Grant, 2024.
+      </p>
+
+      <!-- Abstract -->
+      <p class="paper-abstract">
+      </p>
+    </div>
+
+    <!-- Add more .paper blocks as needed... -->
+
   </div>
 
   <footer>
