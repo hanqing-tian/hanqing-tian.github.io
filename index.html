@@ -10,7 +10,7 @@
       padding: 0;
       background-color: #ffffff;
       font-family: Arial, sans-serif;
-      font-size: 15px; /* Slightly smaller base font size for a modern look */
+      font-size: 14px; /* Match research.html base font size */
       color: #000000;  /* Black text */
     }
 
@@ -19,12 +19,11 @@
       padding: 10px;
       border-bottom: 2px solid #0066cc;  /* Blue-ish line under nav */
       display: flex;
-      justify-content: flex-start;
       align-items: center;
-      background-color: #f9f9f9; /* Light background for contrast */
+      background-color: #f9f9f9; /* Optional light background for contrast */
     }
     nav a {
-      color: #0066cc;            /* Blue-ish links */
+      color: #0066cc;            /* Blue-ish links to match research.html */
       margin-right: 15px;
       text-decoration: none;
       font-weight: bold;
@@ -33,18 +32,18 @@
       text-decoration: underline; /* Subtle hover effect */
     }
 
-    /* Headings */
-    h1, h2 {
-      color: #0066cc;            /* Blue-ish headings */
+    /* Headings (match the research.html style) */
+    h1 {
+      color: #0066cc;
       margin-top: 20px;
+      font-size: 1.8em;
       margin-bottom: 10px;
     }
-    h1 {
-      font-size: 1.8em;          /* Larger font for main name */
-    }
     h2 {
+      color: #0066cc;
+      margin-top: 20px;
       font-size: 1.4em;
-      margin-top: 30px;
+      margin-bottom: 10px;
     }
 
     /* Main container */
@@ -65,15 +64,15 @@
     /* Profile photo on the left */
     .profile-photo {
       max-width: 150px;          /* Control image size */
-      border-radius: 50%;        /* Make it round (optional) */
-      margin-right: 20px;        /* Spacing between image and text */
+      border-radius: 50%;        /* Round photo (optional) */
+      margin-right: 20px;
       margin-bottom: 20px;       /* Some spacing for smaller screens */
     }
 
     /* Profile text on the right */
     .profile-text {
-      flex: 1;                   /* Take remaining space */
-      min-width: 200px;          /* Ensures text area doesn’t collapse on very small screens */
+      flex: 1;                   /* Use remaining space */
+      min-width: 200px;          /* Prevent text from collapsing on narrow screens */
     }
 
     /* Intro text */
@@ -87,23 +86,23 @@
       text-align: center;
       padding: 10px;
       color: #333333;
-      background-color: #f9f9f9; /* Match navigation background for consistency */
+      background-color: #f9f9f9; 
       border-top: 1px solid #ddd;
       margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <!-- Navigation (appears on every page) -->
+  <!-- Navigation -->
   <nav>
     <a href="index.html">Home</a>
     <a href="research.html">Research</a>
   </nav>
 
   <div class="container">
-    <!-- Profile section -->
+    <!-- Profile section: photo + text -->
     <div class="profile-container">
-      <!-- Replace "yourphoto.jpg" with your actual photo file or external link -->
+      <!-- Replace "yourphoto.jpg" with an actual image file or external URL -->
       <img src="photo.png" alt="Hanqing Tian" class="profile-photo" />
       <div class="profile-text">
         <h1>Hanqing Tian</h1>
