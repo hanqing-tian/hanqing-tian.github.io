@@ -10,6 +10,7 @@
       padding: 0;
       background-color: #ffffff;
       font-family: Arial, sans-serif;
+      font-size: 14px; /* Slightly smaller base font size */
     }
 
     /* Navigation bar */
@@ -25,9 +26,15 @@
     }
 
     /* Headings */
-    h1, h2 {
-      color: #0066cc;            /* Blue-ish headings */
+    h1 {
+      color: #0066cc;            /* Blue-ish heading */
       margin-top: 20px;
+      font-size: 1.8em;          /* Keep "Working Papers" larger */
+    }
+    h2 {
+      color: #0066cc;
+      margin-top: 20px;
+      font-size: 1.4em;          /* Slightly smaller than h1 */
     }
 
     /* Main container */
@@ -45,10 +52,16 @@
       color: #0066cc;            /* Blue-ish paper title */
       margin-bottom: 5px;
     }
+    /* Underline links in the title */
+    .paper-title a {
+      text-decoration: underline; 
+      color: #0066cc;
+    }
+
     /* Style coauthor line if desired */
     .coauthors {
       margin: 5px 0;
-      font-style: italic;        /* Example style - feel free to change */
+      font-style: italic;
     }
     .paper-abstract {
       color: #000000;            /* Abstract in black text */
@@ -76,10 +89,8 @@
     <!-- Example paper 1 -->
     <div class="paper">
       <h2 class="paper-title">
-        <!-- Link in the title -->
-        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754" 
-           target="_blank"
-           style="color: #0066cc; text-decoration: none;">
+        <!-- Link in the title, underlined by default -->
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754" target="_blank">
           AI in Finance and Information Overload
         </a>
       </h2>
