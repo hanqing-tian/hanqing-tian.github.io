@@ -1,12 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+  <meta charset="UTF-8" />
+  <title>Hanqing Tian - Home</title>
+  <style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navigation bar */
+    nav {
+      padding: 10px;
+      border-bottom: 2px solid #0066cc;  /* Blue-ish line under nav */
+    }
+    nav a {
+      color: #0066cc;            /* Blue-ish links */
+      margin-right: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Headings */
+    h1, h2 {
+      color: #0066cc;            /* Blue-ish headings */
+      margin-top: 20px;
+    }
+
+    /* Main container */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Intro text in black */
+    .intro {
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #333333;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is my personal page hosted on GitHub Pages!</p>
+  <!-- Navigation (appears on every page) -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+  </nav>
+
+  <div class="container">
+    <h1>Hanqing Tian</h1>
+    <p class="intro">
+      Welcome! I am second year finance PHD student at the University of Melbourne.
+    </p>
+
+    <h2>Research Interests</h2>
+    <p class="intro">
+      • Financial Machine Learning<br>
+      • Asset pricing<br>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 Hanqing Tian
+  </footer>
 </body>
 </html>
