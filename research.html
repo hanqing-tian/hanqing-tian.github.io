@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hanqing Tian - Research</title>
+  <style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
 
+    /* Navigation bar */
+    nav {
+      padding: 10px;
+      border-bottom: 2px solid #0066cc;  /* Blue-ish line under nav */
+    }
+    nav a {
+      color: #0066cc;            /* Blue-ish links */
+      margin-right: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Headings */
+    h1, h2 {
+      color: #0066cc;            /* Blue-ish headings */
+      margin-top: 20px;
+    }
+
+    /* Main container */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Paper sections */
+    .paper {
+      margin-bottom: 40px;
+    }
+    .paper-title {
+      color: #0066cc;            /* Blue-ish paper title */
+      margin-bottom: 5px;
+    }
+    /* Style coauthor line if desired */
+    .coauthors {
+      margin: 5px 0;
+      font-style: italic;        /* Example style - feel free to change */
+    }
+    .paper-abstract {
+      color: #000000;            /* Abstract in black text */
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #333333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+  </nav>
+
+  <div class="container">
+    <h1>Working Papers</h1>
+
+    <!-- Example paper 1 -->
+    <div class="paper">
+      <h2 class="paper-title">
+        <!-- Link in the title -->
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754" 
+           target="_blank"
+           style="color: #0066cc; text-decoration: none;">
+          AI in Finance and Information Overload
+        </a>
+      </h2>
+      <!-- Coauthors below title -->
+      <p class="coauthors">
+        With
+        <a href="https://www.balogh.net/home" target="_blank">Attila Balogh</a>,
+        <a href="https://www.antoinedidisheim.com/" target="_blank">Antoine Didisheim</a>
+        <a href="https://www.lucianosomoza.com/" target="_blank">Luciano Somoza</a>
+      </p>
+      <p class="paper-abstract">
+        Artificial intelligence is reshaping financial markets, yet the limits to its rationality remain underexplored. 
+        This paper documents information overload in Large Language Models applied to financial analysis. 
+        Using earnings forecasts from corporate calls and market reaction predictions from news, 
+        we show that predictive accuracy follows an inverted U-shaped pattern, where excessive context degrades performance. 
+        Larger LLMs mitigate this effect, increasing the optimal context length. 
+        Our findings underscore a fundamental limitation of AI-driven finance: more data is not always better, 
+        necessitating empirical tuning to determine the right amount of context for each task.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Hanqing Tian
+  </footer>
+</body>
+</html>
