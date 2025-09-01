@@ -188,39 +188,44 @@
             <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5"/>
             <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" fill="none"/>
           </svg>
-          Show email
+          <span class="btn-label">Show email</span>
         </button>
         
-        <!-- Where the obfuscated email will appear -->
-        <span id="emailReveal" class="pill" hidden aria-live="polite"></span>
+        <!-- Where the obfuscated email appears -->
+        <span id="emailReveal" class="pill" hidden aria-live="polite" style="margin-left:8px;"></span>
         
-        <!-- Fallback for users with JS disabled -->
+        <!-- Fallback if JS is disabled -->
         <noscript>hanqingt [at] student [dot] unimelb [dot] edu [dot] au</noscript>
         
         <script>
-          // Reveal a JS-built, non-"@" version on click
           document.addEventListener('DOMContentLoaded', function () {
-            const btn  = document.getElementById('revealEmailBtn');
-            const slot = document.getElementById('emailReveal');
-            if (!btn || !slot) return;
+            const btn   = document.getElementById('revealEmailBtn');
+            const slot  = document.getElementById('emailReveal');
+            const label = btn?.querySelector('.btn-label');
+            if (!btn || !slot || !label) return;
         
-            // Build the address without including full text in the HTML source
-            const u  = 'han' + 'qing' + 't';
-            const d  = ['student', 'unimelb', 'edu', 'au'].join('.');
-            const ob = `${u} [at] ${d}`;
+            // Build address without '@' or '.' in the HTML
+            const user  = 'han' + 'qing' + 't';
+            const parts = ['student', 'unimelb', 'edu', 'au'];
+            const obfus = `${user} [at] ${parts.join(' [dot] ')}`;
         
             btn.addEventListener('click', () => {
-              slot.textContent = ob;
-              slot.hidden = false;
-              btn.setAttribute('aria-expanded', 'true');
-              btn.textContent = 'Email shown'; // optional: change button label after reveal
-              // If you prefer to keep the icon + text, comment the line above and do:
-              // btn.querySelector('svg') && (btn.lastChild.nodeType === 3
-              //   ? btn.lastChild.nodeValue = ' Email shown'
-              //   : btn.append(' Email shown'));
+              const willShow = slot.hidden; // toggle
+              if (willShow) {
+                slot.textContent = obfus;
+                slot.hidden = false;
+                label.textContent = 'Hide email';
+                btn.setAttribute('aria-expanded', 'true');
+              } else {
+                slot.hidden = true;
+                slot.textContent = '';
+                label.textContent = 'Show email';
+                btn.setAttribute('aria-expanded', 'false');
+              }
             });
           });
         </script>
+
 
         <a class="btn" href="research.html">
           <!-- Book icon -->
