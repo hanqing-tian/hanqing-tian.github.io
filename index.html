@@ -178,11 +178,50 @@
         </ul>
       </nav>
       <div class="actions">
-        <a class="btn secondary" href="hanqingt@student.unimelb.edu.au" title="Email Hanqing" aria-label="Email Hanqing">
+        <button class="btn secondary" type="button"
+                id="revealEmailBtn"
+                aria-controls="emailReveal"
+                aria-expanded="false"
+                title="Show email" aria-label="Show email">
           <!-- Mail icon -->
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-          Email
-        </a>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          </svg>
+          Show email
+        </button>
+        
+        <!-- Where the obfuscated email will appear -->
+        <span id="emailReveal" class="pill" hidden aria-live="polite"></span>
+        
+        <!-- Fallback for users with JS disabled -->
+        <noscript>hanqingt [at] student [dot] unimelb [dot] edu [dot] au</noscript>
+        
+        <script>
+          // Reveal a JS-built, non-"@" version on click
+          document.addEventListener('DOMContentLoaded', function () {
+            const btn  = document.getElementById('revealEmailBtn');
+            const slot = document.getElementById('emailReveal');
+            if (!btn || !slot) return;
+        
+            // Build the address without including full text in the HTML source
+            const u  = 'han' + 'qing' + 't';
+            const d  = ['student', 'unimelb', 'edu', 'au'].join('.');
+            const ob = `${u} [at] ${d}`;
+        
+            btn.addEventListener('click', () => {
+              slot.textContent = ob;
+              slot.hidden = false;
+              btn.setAttribute('aria-expanded', 'true');
+              btn.textContent = 'Email shown'; // optional: change button label after reveal
+              // If you prefer to keep the icon + text, comment the line above and do:
+              // btn.querySelector('svg') && (btn.lastChild.nodeType === 3
+              //   ? btn.lastChild.nodeValue = ' Email shown'
+              //   : btn.append(' Email shown'));
+            });
+          });
+        </script>
+
         <a class="btn" href="research.html">
           <!-- Book icon -->
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4h9a3 3 0 0 1 3 3v12H9a3 3 0 0 0-3 3V4z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
