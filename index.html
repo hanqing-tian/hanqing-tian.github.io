@@ -29,6 +29,8 @@
       --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.06);
       --radius: 16px;
     }
+
+    /* System dark for AUTO mode */
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0b121b;
@@ -43,12 +45,32 @@
       a { color: #7ab3ff; }
     }
 
-    [data-theme="light"] {
-      color-scheme: light;
+    /* Manual overrides for explicit LIGHT/DARK selections */
+    html[data-theme="dark"] {
+      --bg: #0b121b;
+      --surface: #101826;
+      --text: #e5e7eb;
+      --muted-1: #a8b2c1;
+      --muted-2: #233043;
+      --ring: #1e3a5f;
+      --chip-bg: #0f1b2c;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.35);
     }
-    [data-theme="dark"] {
-      color-scheme: dark;
+    html[data-theme="dark"] a { color: #7ab3ff; }
+
+    html[data-theme="light"] {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted-1: #64748b;
+      --muted-2: #e5e7eb;
+      --ring: #cfe6ff;
+      --chip-bg: #f2f7ff;
+      --shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 8px 24px rgba(15, 23, 42, 0.06);
     }
+
+    [data-theme="light"] { color-scheme: light; }
+    [data-theme="dark"] { color-scheme: dark; }
 
     /* ===== Global ===== */
     * { box-sizing: border-box; }
@@ -58,9 +80,10 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       line-height: 1.6;
       color: var(--text);
-      background: radial-gradient(1200px 500px at 10% -10%, rgba(0,102,204,0.07), transparent 50%),
-                  radial-gradient(1200px 500px at 90% -20%, rgba(0,102,204,0.06), transparent 50%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(0,102,204,0.07), transparent 50%),
+        radial-gradient(1200px 500px at 90% -20%, rgba(0,102,204,0.06), transparent 50%),
+        var(--bg);
     }
     .container {
       max-width: 980px;
@@ -181,7 +204,7 @@
         <div>
           <h1>Hanqing Tian</h1>
           <p class="lead">
-            Third‑year Finance PhD student at the University of Melbourne. I study how
+            Third-year Finance PhD student at the University of Melbourne. I study how
             <strong>machine learning</strong> and <strong>NLP</strong> can advance
             <strong>asset pricing</strong> and forecasting, and I probe the limitations and biases of large language models in financial contexts.
           </p>
@@ -200,7 +223,7 @@
       <h2>About</h2>
       <div class="card" style="padding: 20px 24px;">
         <p>
-          Welcome! I earned my bachelor's at the University of Melbourne and am now continuing at Melbourne as a PhD student. My work focuses on using large language models for stock price prediction and earnings forecasting while developing strategies to enhance reliability and efficiency for real‑world use.
+          Welcome! I earned my bachelor's at the University of Melbourne and am now continuing at Melbourne as a PhD student. My work focuses on using large language models for stock price prediction and earnings forecasting while developing strategies to enhance reliability and efficiency for real-world use.
         </p>
       </div>
     </section>
@@ -223,40 +246,58 @@
   </footer>
 
   <script>
-    // Simple theme toggle with persistence
+    // Robust theme toggle with persistence; mirrors research.html
     (function() {
-      const root = document.documentElement;
-      const btn = document.getElementById('themeToggle');
-      const iconSun = document.getElementById('iconSun');
-      const iconMoon = document.getElementById('iconMoon');
-
-      const saved = localStorage.getItem('theme');
-      if (saved === 'light' || saved === 'dark') {
-        root.setAttribute('data-theme', saved);
-      }
-      refreshIcons();
-
-      btn?.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : (current === 'light' ? 'auto' : 'dark');
-        if (next === 'auto') {
+      function apply(mode) {
+        const root = document.documentElement;
+        if (mode === 'auto') {
           root.setAttribute('data-theme', 'auto');
           localStorage.removeItem('theme');
         } else {
-          root.setAttribute('data-theme', next);
-          localStorage.setItem('theme', next);
+          root.setAttribute('data-theme', mode);
+          localStorage.setItem('theme', mode);
         }
+        refreshIcons();
+      }
+
+      function refreshIcons() {
+        const root = document.documentElement;
+        const iconSun = document.getElementById('iconSun');
+        const iconMoon = document.getElementById('iconMoon');
+        if (!iconSun || !iconMoon) return;
+        const current = root.getAttribute('data-theme') || 'auto';
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = current === 'dark' || (current === 'auto' && prefersDark);
+        iconSun.hidden = !isDark; // show sun in dark mode (tap to go light)
+        iconMoon.hidden = isDark; // show moon in light mode (tap to go dark)
+      }
+
+      // Initialize from storage immediately
+      (function init() {
+        const saved = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme',
+          (saved === 'light' || saved === 'dark') ? saved : 'auto'
+        );
+      })();
+
+      // Attach after DOM is ready
+      document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+          const current = document.documentElement.getAttribute('data-theme') || 'auto';
+          const next = current === 'dark' ? 'light' : (current === 'light' ? 'auto' : 'dark');
+          apply(next);
+        });
         refreshIcons();
       });
 
-      function refreshIcons() {
-        const current = root.getAttribute('data-theme');
-        // If dark or system prefers dark, show sun (to switch to light)
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = current === 'dark' || (current === 'auto' && prefersDark);
-        iconSun.hidden = !isDark;
-        iconMoon.hidden = isDark;
-      }
+      // Keep icons in sync if system theme changes while in auto
+      try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+          if ((localStorage.getItem('theme') || 'auto') === 'auto') refreshIcons();
+        });
+      } catch {}
     })();
   </script>
 
