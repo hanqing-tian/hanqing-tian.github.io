@@ -103,8 +103,52 @@
     .paper-title a:hover { border-color: var(--brand); }
     .meta { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
     .meta .coauthors { color: var(--muted-1); }
-    .badges { display: flex; gap: 6px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 6px; }
     .badge { font-size: .85rem; padding: 4px 8px; border-radius: 999px; background: var(--chip-bg); border: 1px solid var(--muted-2); }
+    .presentations {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      align-items: start;
+      column-gap: 12px;
+      margin-top: 8px;
+      color: var(--muted-1);
+      font-size: .92rem;
+    }
+    .presentations-label {
+      padding-top: 5px;
+      color: var(--muted-1);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .presentation-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-width: 720px;
+    }
+    .presentation-list li {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px 5px 9px;
+      color: var(--text);
+      border: 1px solid var(--muted-2);
+      border-left: 3px solid var(--brand);
+      border-radius: 10px;
+      background: color-mix(in srgb, var(--surface) 88%, var(--chip-bg));
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+    @media (max-width: 640px) {
+      .presentations { grid-template-columns: 1fr; row-gap: 2px; }
+      .presentations-label { padding-top: 0; }
+    }
     .links { display: flex; gap: 10px; }
     .abstract { margin-top: 10px; }
     details { margin-top: 8px; }
@@ -112,6 +156,11 @@
     details > summary::-webkit-details-marker { display: none; }
     .summary-line { display: inline-flex; align-items: center; gap: 8px; }
     .summary-line svg { flex: none; }
+
+    @media (max-width: 720px) {
+      .paper header { grid-template-columns: 1fr; }
+      .links { flex-wrap: wrap; }
+    }
 
     footer { text-align: center; color: var(--muted-1); padding: 20px; border-top: 1px solid var(--muted-2); margin-top: 40px; }
       
@@ -214,12 +263,11 @@
 
   <main id="main" class="container">
     <section class="card" style="padding: clamp(16px, 2.5vw, 28px);">
-      <h1>Working Papers</h1>
-      <p class="muted">A selection of current projects and papers. Abstracts are toggleable for quick scanning.</p>
+      <h1>Research</h1>
+      <p class="muted">A selection of current projects and papers, with selected presentations listed beneath each project. Abstracts are toggleable for quick scanning.</p>
     </section>
 
     <section class="papers">
-      <section class="papers">
       <!-- Paper 1 -->
       <article class="paper card" id="news-shocks" itemscope itemtype="https://schema.org/ScholarlyArticle">
         <header>
@@ -229,15 +277,22 @@
             </h3>
             <div class="meta">
               <span class="coauthors" itemprop="author">With <a href="https://www.antoinedidisheim.com/" target="_blank" rel="noopener">Antoine Didisheim (Uni of Melbourne)</a>, <a href="https://www.bryankellyacademic.org/" target="_blank" rel="noopener">Bryan Kelly (Yale/AQR)</a>, <a href="https://mopourmohammadi.com/index.html" target="_blank" rel="noopener">Mo Pourmohammadi (Yale)</a></span>
-              <span class="badges">
-                <span class="badge" aria-label="status">Working paper</span>
-              </span>
+              <div class="presentations" aria-label="Presentations">
+                <span class="presentations-label">Presented at</span>
+                <ul class="presentation-list">
+                  <li>NBER SI 2026</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="links">
             <a class="btn secondary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6540399" target="_blank" rel="noopener" aria-label="Open on SSRN">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7" stroke="currentColor" stroke-width="1.5"/><path d="M21 3 12 12" stroke="currentColor" stroke-width="1.5"/><path d="M10 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.5"/></svg>
               SSRN
+            </a>
+            <a class="btn secondary" href="https://www.nber.org/papers/w35093" target="_blank" rel="noopener" aria-label="Open on NBER">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7" stroke="currentColor" stroke-width="1.5"/><path d="M21 3 12 12" stroke="currentColor" stroke-width="1.5"/><path d="M10 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.5"/></svg>
+              NBER
             </a>
           </div>
         </header>
@@ -254,7 +309,7 @@
         </details>
       </article>
         
-      <!-- Paper 1 -->
+      <!-- Paper 2 -->
       <article class="paper card" id="brain-scan-llm" itemscope itemtype="https://schema.org/ScholarlyArticle">
         <header>
           <div>
@@ -263,9 +318,13 @@
             </h3>
             <div class="meta">
               <span class="coauthors" itemprop="author">With <a href="https://mitsloan.mit.edu/faculty/directory/hui-chen" target="_blank" rel="noopener">Hui Chen (MIT)</a>, <a href="https://www.antoinedidisheim.com/" target="_blank" rel="noopener">Antoine Didisheim (Uni of Melbourne)</a>, <a href="https://mopourmohammadi.com/index.html" target="_blank" rel="noopener">Mo Pourmohammadi (Yale)</a>, <a href="https://www.lucianosomoza.com/" target="_blank" rel="noopener">Luciano Somoza (ESSEC)</a></span>
-              <span class="badges">
-                <span class="badge" aria-label="status">Working paper</span>
-              </span>
+              <div class="presentations" aria-label="Presentations">
+                <span class="presentations-label">Presented at</span>
+                <ul class="presentation-list">
+                  <li>EFA 2026</li>
+                  <li>Toronto Asset Pricing and Investments Workshop 2026</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="links">
@@ -292,7 +351,7 @@
         </details>
       </article>
 
-      <!-- Paper 2 -->
+      <!-- Paper 3 -->
       <article class="paper card" id="ai-finance-overload" itemscope itemtype="https://schema.org/ScholarlyArticle">
         <header>
           <div>
@@ -301,9 +360,6 @@
             </h3>
             <div class="meta">
               <span class="coauthors" itemprop="author">With <a href="https://www.balogh.net/home" target="_blank" rel="noopener">Attila Balogh (Uni of Melbourne)</a>, <a href="https://www.antoinedidisheim.com/" target="_blank" rel="noopener">Antoine Didisheim (Uni of Melbourne)</a>, <a href="https://www.lucianosomoza.com/" target="_blank" rel="noopener">Luciano Somoza (ESSEC)</a></span>
-              <span class="badges">
-                <span class="badge" aria-label="status">Working paper</span>
-              </span>
             </div>
           </div>
           <div class="links">
@@ -326,7 +382,7 @@
         </details>
       </article>
 
-      <!-- Paper 3 -->
+      <!-- Paper 4 -->
       <article class="paper card" id="emotions-academia" itemscope itemtype="https://schema.org/ScholarlyArticle">
         <header>
           <div>
@@ -362,7 +418,7 @@
   </main>
 
   <footer>
-    © 2025 Hanqing Tian
+    © 2026 Hanqing Tian
   </footer>
 
   <script>
@@ -430,9 +486,10 @@
     "@context": "https://schema.org",
     "@type": "ItemList",
     "itemListElement": [
-      {"@type": "ListItem", "position": 1, "item": {"@type": "ScholarlyArticle", "name": "A Financial Brain Scan of the LLM", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5412277"}},
-      {"@type": "ListItem", "position": 2, "item": {"@type": "ScholarlyArticle", "name": "AI in Finance and Information Overload", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754"}},
-      {"@type": "ListItem", "position": 3, "item": {"@type": "ScholarlyArticle", "name": "Showing Emotions in Academia: What is the Cost and Who Can Afford It?", "url": "research.html#emotions-academia"}}
+      {"@type": "ListItem", "position": 1, "item": {"@type": "ScholarlyArticle", "name": "The Inefficient Pricing of News", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6540399"}},
+      {"@type": "ListItem", "position": 2, "item": {"@type": "ScholarlyArticle", "name": "A Financial Brain Scan of the LLM", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5412277"}},
+      {"@type": "ListItem", "position": 3, "item": {"@type": "ScholarlyArticle", "name": "AI in Finance and Information Overload", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5163754"}},
+      {"@type": "ListItem", "position": 4, "item": {"@type": "ScholarlyArticle", "name": "Showing Emotions in Academia: What is the Cost and Who Can Afford It?", "url": "research.html#emotions-academia"}}
     ]
   }
   </script>
