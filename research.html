@@ -105,49 +105,15 @@
     .meta .coauthors { color: var(--muted-1); }
     .badges { display: flex; flex-wrap: wrap; gap: 6px; }
     .badge { font-size: .85rem; padding: 4px 8px; border-radius: 999px; background: var(--chip-bg); border: 1px solid var(--muted-2); }
-    .presentations {
-      display: grid;
-      grid-template-columns: max-content 1fr;
-      align-items: start;
-      column-gap: 12px;
-      margin-top: 8px;
+    .presentation-line {
+      margin-top: 6px;
       color: var(--muted-1);
-      font-size: .92rem;
+      font-size: .93rem;
+      line-height: 1.5;
     }
-    .presentations-label {
-      padding-top: 5px;
-      color: var(--muted-1);
-      font-size: .74rem;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .presentation-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      max-width: 720px;
-    }
-    .presentation-list li {
-      display: inline-flex;
-      align-items: center;
-      min-height: 30px;
-      padding: 5px 10px 5px 9px;
+    .presentation-line strong {
       color: var(--text);
-      border: 1px solid var(--muted-2);
-      border-left: 3px solid var(--brand);
-      border-radius: 10px;
-      background: color-mix(in srgb, var(--surface) 88%, var(--chip-bg));
-      line-height: 1.35;
-      white-space: nowrap;
-    }
-    @media (max-width: 640px) {
-      .presentations { grid-template-columns: 1fr; row-gap: 2px; }
-      .presentations-label { padding-top: 0; }
+      font-weight: 600;
     }
     .links { display: flex; gap: 10px; }
     .abstract { margin-top: 10px; }
@@ -277,12 +243,7 @@
             </h3>
             <div class="meta">
               <span class="coauthors" itemprop="author">With <a href="https://www.antoinedidisheim.com/" target="_blank" rel="noopener">Antoine Didisheim (Uni of Melbourne)</a>, <a href="https://www.bryankellyacademic.org/" target="_blank" rel="noopener">Bryan Kelly (Yale/AQR)</a>, <a href="https://mopourmohammadi.com/index.html" target="_blank" rel="noopener">Mo Pourmohammadi (Yale)</a></span>
-              <div class="presentations" aria-label="Presentations">
-                <span class="presentations-label">Presented at</span>
-                <ul class="presentation-list">
-                  <li>NBER SI 2026</li>
-                </ul>
-              </div>
+              <p class="presentation-line"><strong>Presentations:</strong> NBER SI 2026</p>
             </div>
           </div>
           <div class="links">
@@ -318,13 +279,7 @@
             </h3>
             <div class="meta">
               <span class="coauthors" itemprop="author">With <a href="https://mitsloan.mit.edu/faculty/directory/hui-chen" target="_blank" rel="noopener">Hui Chen (MIT)</a>, <a href="https://www.antoinedidisheim.com/" target="_blank" rel="noopener">Antoine Didisheim (Uni of Melbourne)</a>, <a href="https://mopourmohammadi.com/index.html" target="_blank" rel="noopener">Mo Pourmohammadi (Yale)</a>, <a href="https://www.lucianosomoza.com/" target="_blank" rel="noopener">Luciano Somoza (ESSEC)</a></span>
-              <div class="presentations" aria-label="Presentations">
-                <span class="presentations-label">Presented at</span>
-                <ul class="presentation-list">
-                  <li>EFA 2026</li>
-                  <li>Toronto Asset Pricing and Investments Workshop 2026</li>
-                </ul>
-              </div>
+              <p class="presentation-line"><strong>Presentations:</strong> EFA 2026, Toronto Asset Pricing and Investments Workshop 2026</p>
             </div>
           </div>
           <div class="links">
